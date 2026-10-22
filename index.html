@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blasta Bars | Event Bar Specialists</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blasta: {
+                            pink: '#e91e63',
+                            navy: '#10132b',
+                            card: 'rgba(15, 17, 35, 0.72)',
+                            border: 'rgba(255, 255, 255, 0.12)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Textured background with 20% pure black tint overlay */
+        .bg-textured-layer {
+            background-color: #0b0c16;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)),
+                url('https://raw.githubusercontent.com/owenmageedesign/blastabars-email/main/E5428_03.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Ambient drifting mesh gradient overlays */
+        @keyframes driftOrbOne {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 0.35;
+            }
+            50% {
+                transform: translate3d(8vw, -6vh, 0) scale(1.15);
+                opacity: 0.55;
+            }
+            100% {
+                transform: translate3d(0, 0, 0) scale(1);
+                opacity: 0.35;
+            }
+        }
+
+        @keyframes driftOrbTwo {
+            0% {
+                transform: translate3d(0, 0, 0) scale(1.1);
+                opacity: 0.25;
+            }
+            50% {
+                transform: translate3d(-10vw, 8vh, 0) scale(0.95);
+                opacity: 0.45;
+            }
+            100% {
+                transform: translate3d(0, 0, 0) scale(1.1);
+                opacity: 0.25;
+            }
+        }
+
+        @keyframes gradientPulse {
+            0%, 100% {
+                opacity: 0.35;
+                background-position: 0% 50%;
+            }
+            50% {
+                opacity: 0.6;
+                background-position: 100% 50%;
+            }
+        }
+
+        .ambient-orb-1 {
+            animation: driftOrbOne 18s ease-in-out infinite;
+            will-change: transform, opacity;
+        }
+
+        .ambient-orb-2 {
+            animation: driftOrbTwo 22s ease-in-out infinite reverse;
+            will-change: transform, opacity;
+        }
+
+        .ambient-gradient-flow {
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.22), rgba(138, 43, 226, 0.16), rgba(255, 64, 129, 0.18), rgba(15, 17, 35, 0));
+            background-size: 250% 250%;
+            animation: gradientPulse 14s ease infinite alternate;
+            mix-blend-mode: color-dodge;
+        }
+
+        /* Glassmorphism styling for contact cards */
+        .glass-card {
+            background: rgba(14, 16, 32, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        .glass-card:hover {
+            border-color: rgba(233, 30, 99, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(233, 30, 99, 0.25);
+        }
+    </style>
+</head>
+<body class="h-full text-slate-100 font-sans antialiased flex flex-col justify-between selection:bg-blasta-pink selection:text-white relative overflow-x-hidden min-h-screen">
+
+    <!-- Full-screen Background with Texture + Moving Ambient Gradient Overlays + Tint -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <!-- Base textured background image -->
+        <img src="https://raw.githubusercontent.com/owenmageedesign/blastabars-website/main/background.jpg" 
+             alt="Background texture" 
+             class="w-full h-full object-cover object-center scale-105"
+             onerror="this.onerror=null; this.src='./background.jpg';">
+
+        <!-- Subtle drifting radial color orb (Blasta Magenta Glow) -->
+        <div class="ambient-orb-1 absolute -top-[15%] -left-[10%] w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] rounded-full blur-[110px] bg-gradient-to-tr from-pink-600/40 via-fuchsia-600/30 to-purple-800/10 pointer-events-none mix-blend-screen"></div>
+
+        <!-- Subtle drifting radial color orb (Warm Violet & Amber Accent Glow) -->
+        <div class="ambient-orb-2 absolute -bottom-[20%] -right-[10%] w-[65vw] h-[65vw] max-w-[750px] max-h-[750px] rounded-full blur-[120px] bg-gradient-to-bl from-rose-500/35 via-blasta-pink/25 to-indigo-950/20 pointer-events-none mix-blend-screen"></div>
+
+        <!-- Flowing shimmer mesh layer -->
+        <div class="ambient-gradient-flow absolute inset-0 pointer-events-none"></div>
+
+        <!-- Subtle 10% Black Tint Overlay -->
+        <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+
+    </div>
+
+    <!-- Main Content: Centered New Vector Logo & Contact Cards -->
+    <main class="relative z-10 max-w-2xl mx-auto px-4 py-8 w-full text-center flex flex-col items-center justify-center my-auto">
+        
+        <!-- Attached Horizontal Logo with 'Event Bar Specialists' integrated -->
+        <div class="w-full max-w-lg sm:max-w-xl px-2 sm:px-6 mb-8 sm:mb-10 transition duration-300 hover:scale-[1.01]">
+            <img src="./logo.svg" 
+                 alt="Blasta Bars - Event Bar Specialists" 
+                 class="w-full h-auto object-contain mx-auto block"
+                 onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/owenmageedesign/blastabars-website/main/logo.svg';">
+        </div>
+
+        <!-- Directors Contact Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+            
+            <!-- Ciaran Smyth -->
+            <div class="glass-card rounded-2xl p-5 text-left transition duration-200 shadow-2xl">
+                <div class="mb-3.5">
+                    <div class="font-display font-bold text-lg text-white tracking-wide">Ciaran Smyth</div>
+                    <div class="text-[11px] font-semibold text-blasta-pink uppercase tracking-widest">Director</div>
+                </div>
+                <div class="space-y-2.5 text-xs font-medium">
+                    <a href="tel:+447971169487" class="flex items-center gap-2.5 text-slate-200 hover:text-white transition group">
+                        <span class="w-7 h-7 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-blasta-pink group-hover:bg-blasta-pink group-hover:text-white transition text-xs">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <span class="tracking-wide">+44 7971 169487</span>
+                    </a>
+                    <a href="mailto:ciaran@blastabars.com" class="flex items-center gap-2.5 text-slate-200 hover:text-white transition group">
+                        <span class="w-7 h-7 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-blasta-pink group-hover:bg-blasta-pink group-hover:text-white transition text-xs">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <span class="truncate">ciaran@blastabars.com</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- David Neely -->
+            <div class="glass-card rounded-2xl p-5 text-left transition duration-200 shadow-2xl">
+                <div class="mb-3.5">
+                    <div class="font-display font-bold text-lg text-white tracking-wide">David Neely</div>
+                    <div class="text-[11px] font-semibold text-blasta-pink uppercase tracking-widest">Director</div>
+                </div>
+                <div class="space-y-2.5 text-xs font-medium">
+                    <a href="tel:+447836325942" class="flex items-center gap-2.5 text-slate-200 hover:text-white transition group">
+                        <span class="w-7 h-7 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-blasta-pink group-hover:bg-blasta-pink group-hover:text-white transition text-xs">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <span class="tracking-wide">+44 7836 325942</span>
+                    </a>
+                    <a href="mailto:david@blastabars.com" class="flex items-center gap-2.5 text-slate-200 hover:text-white transition group">
+                        <span class="w-7 h-7 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center text-blasta-pink group-hover:bg-blasta-pink group-hover:text-white transition text-xs">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <span class="truncate">david@blastabars.com</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Social Media Badges -->
+        <div class="mt-8 flex items-center gap-3.5">
+            <a href="https://www.facebook.com/blastabarseventcompany" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="w-11 h-11 rounded-full bg-black/50 border border-white/15 hover:border-blasta-pink hover:bg-blasta-pink text-slate-200 hover:text-white flex items-center justify-center transition shadow-lg backdrop-blur-sm"
+               aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f text-sm"></i>
+            </a>
+            <a href="https://x.com/blastabars" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="w-11 h-11 rounded-full bg-black/50 border border-white/15 hover:border-blasta-pink hover:bg-blasta-pink text-slate-200 hover:text-white flex items-center justify-center transition shadow-lg backdrop-blur-sm"
+               aria-label="X Twitter">
+                <i class="fa-brands fa-x-twitter text-sm"></i>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="relative z-10 py-5 text-center text-slate-300 text-[11px] border-t border-white/10 bg-black/30 backdrop-blur-md">
+        &copy; <span id="current-year"></span> Blastabars. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
